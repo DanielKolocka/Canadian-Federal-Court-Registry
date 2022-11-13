@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Create Affidavit</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="content_title">Create new affidavit:</div>
+    <form action="/create/Affidavit/{{ case }}" method="post">
+        <label for="submitterName">Submitter name:</label>
+        <input type="text" id="submitterName" name="submitterName"><br>
+        <label for="dateSubmitted">Date of submission:</label>
+        <input type="date" id="dateSubmitted" name="dateSubmitted"><br>
+        <label for="linkToDoc">Link to Document:</label>
+        <input type="text" id="linkToDoc" name="linkToDoc"><br>
+        <label for="dateGiven">Date given:</label>
+        <input type="date" id="dateGiven" name="dateGiven"><br>
+        <label for="affiantName">Affiant name:</label>
+        <input type="text" id="affiantName" name="affiantName"><br>
+        <label for="phone">Phone Number of Affiant:</label>
+        <input type="tel" id="phone" name="phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
+        <label for="email">E-mail of Affiant:</label>
+        <input type="email" id="email" name="email"><br>
+        <label for="deadline">Deadline for submission:</label>
+        <input type="date" id="deadline" name="deadline"><br>
+        <input type="submit" value="Create">
+    </form>
+</div>
+{% endblock %}

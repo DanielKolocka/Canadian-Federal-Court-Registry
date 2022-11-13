@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Create Registry Officer</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="content_title">Create new Registry Officer:</div>
+    <form action="/create/RegistryOfficer/0" method="post">
+        <label for="name">Name of Registry Officer:</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">E-mail of Registry Officer:</label>
+        <input type="email" id="email" name="email"><br>
+        <input type="submit" value="Create">
+    </form>
+</div>
+{% endblock %}

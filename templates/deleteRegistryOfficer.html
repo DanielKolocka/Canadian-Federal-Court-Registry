@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Delete Registry Officer</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="content_title">Delete a Registry Officer:</div>
+    <form action="/delete/RegistryOfficer/0/0" method="post">
+        <label for="id">Choose Registry Officer to delete</label>
+        <select id="id" name="id">
+            {% for ro in registry_officers %}
+                <option value="{{ ro[0] }}">{{ ro[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit" value="Delete">
+    </form>
+</div>
+{% endblock %}

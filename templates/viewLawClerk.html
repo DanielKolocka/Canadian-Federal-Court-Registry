@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Law Clerks</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="content_title">Law Clerks:</div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Clerks for</th>
+            </tr>
+            {% for clerk in clerks %}
+                <tr>
+                    <td>{{ clerk[0] }}</td>
+                    <td>{{ clerk[1] }}</td>
+                    <td>{{ clerk[2] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

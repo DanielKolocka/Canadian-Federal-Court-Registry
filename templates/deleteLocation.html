@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>delete Location</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="content_title">Delete a Location:</div>
+    <form action="/delete/Location/0/0" method="post">
+        <label for="id">Choose Location to delete:</label>
+        <select id="id" name="id">
+            {% for loc in locations %}
+                <option value="{{ loc[0], loc[1] }}">{{ loc[0], loc[1], loc[2] }}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit" value="Delete">
+    </form>
+</div>
+{% endblock %}

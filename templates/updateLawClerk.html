@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Update Law Clerk</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="content_title">Update Law Clerk:</div>
+    <form action="/update/LawClerk/0/0" method="post">
+        <label for="id">Choose Law Clerk to update:</label>
+        <select id="id" name="id">
+            {% for clerk in clerks %}
+                <option value="{{ clerk[0] }}">{{ clerk[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="judge">Clerk for:</label>
+        <select id="judge" name="judge">
+            {% for judge in judges %}
+                <option value="{{ judge[0] }}">{{ judge[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="name">New Name:</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">New Email:</label>
+        <input type="email" id="email" name="email"><br>
+        <input type="submit" value="Update">
+    </form>
+</div>
+{% endblock %}

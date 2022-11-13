@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <div class="header">
+            <div class="title">
+                <div class="side_title left_text"> &nbsp; CMPT354 Project</div>
+                <div class="center_title">Court Registry Management System</div>
+                <div class="side_title right_text">Canada &nbsp; &nbsp;</div>
+            </div>
+            <div class="mainFunctions">
+                <div class="row_100p">
+                    <div class="base_btn_container_top">
+                        <div class="buttonStyle row_80p">
+                            <a href="/">Home</a>
+                        </div>        
+                    </div>
+                    <div class="base_btn_container_top">
+                        <div class="buttonStyle row_80p">
+                            <a href="/view/choose/">View</a>
+                        </div>        
+                    </div>
+                    <div class="base_btn_container_bottom">
+                        <div class="buttonStyle row_80p">
+                            <div class="buttonText"><a href="/create/choose/0">Create</a></div>
+                        </div>
+                    </div>
+                    <div class="base_btn_container_bottom">
+                        <div class="buttonStyle row_80p">
+                            <a href="/update/choose/0/0">Update</a>
+                        </div>
+                    </div>
+                    <div class="base_btn_container_bottom">
+                        <div class="buttonStyle row_80p">
+                            <a href="/delete/choose/0/0">Delete</a>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            
+            
+        </div>
+        {% block body %}{% endblock %}
+    </body>
+</html>

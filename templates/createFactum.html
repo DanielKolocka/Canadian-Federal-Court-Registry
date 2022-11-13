@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Create Factum</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Create new factum:</h1>
+    <form action="/create/Factum/{{ case }}" method="post">
+        <label for="submitterName">Submitter name:</label>
+        <input type="text" id="submitterName" name="submitterName"><br>
+        <label for="dateSubmitted">Date of submission:</label>
+        <input type="date" id="dateSubmitted" name="dateSubmitted"><br>
+        <label for="linkToDoc">Link to Document:</label>
+        <input type="text" id="linkToDoc" name="linkToDoc"><br>
+        <label for="releventMotion">Relevant Motion:</label>
+        <input type="text" id="releventMotion" name="releventMotion"><br>
+        <label for="deadline">Deadline for submission:</label>
+        <input type="date" id="deadline" name="deadline"><br>
+        <input type="submit" value="Create">
+    </form>
+</div>
+{% endblock %}

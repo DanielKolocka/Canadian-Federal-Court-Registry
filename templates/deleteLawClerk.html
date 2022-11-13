@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Delete Law Clerk</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="content_title">Delete a Law Clerk:</div>
+    <form action="/delete/LawClerk/0/0" method="post">
+        <label for="id">Choose Law Clerk to delete:</label>
+        <select id="id" name="id">
+            {% for clerk in clerks %}
+                <option value="{{ clerk[0] }}">{{ clerk[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit" value="Delete">
+    </form>
+</div>
+{% endblock %}

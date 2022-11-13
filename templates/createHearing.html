@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Create Hearing</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Create new hearing:</h1>
+    <form action="/create/Hearing/{{ case }}" method="post">
+        <label for="hearingDate">Date of Hearing:</label>
+        <input type="datetime-local" id="hearingDate" name="hearingDate"><br>
+        <label for="id">Hearing Location:</label>
+        <select id="id" name="id">
+            {% for loc in locations %}
+                <option value="{{ loc[0], loc[1] }}">{{ loc[0], loc[1], loc[2] }}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit" value="Create">
+    </form>
+</div>
+{% endblock %}

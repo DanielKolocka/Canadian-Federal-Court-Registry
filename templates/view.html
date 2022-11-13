@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>View Entity</title>
+{% endblock %}
+
+{% block body %}
+<div class="content_title">Choose the entities you would like to view:</div>
+<div class="content">
+    <form action="/view/choose/" method="post">
+        <select id="entity" name="entity">
+            {% for entity in entities %}
+                <option value="{{ entity }}">{{ entity }}</option>
+            {% endfor %}
+        </select><br>
+        <input type="submit" value="View">
+    </form>
+</div>
+{% endblock %}

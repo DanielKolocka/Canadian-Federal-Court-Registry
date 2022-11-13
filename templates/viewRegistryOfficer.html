@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Registry Officers</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="content_title">Registry Officers:</div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            {% for ro in registry_officers %}
+                <tr>
+                    <td>{{ ro[0] }}</td>
+                    <td>{{ ro[1] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

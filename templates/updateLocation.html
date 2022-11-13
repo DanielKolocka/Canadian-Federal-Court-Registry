@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Update Location</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="content_title">Update Location:</div>
+    <form action="/update/Location/0/0" method="post">
+        <label for="id">Choose Location to update:</label>
+        <select id="id" name="id">
+            {% for loc in locations %}
+                <option value="{{ loc[0], loc[1] }}">{{ loc[0], loc[1], loc[2] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="seatingCap">Seating Capacity:</label>
+        <input type="number" id="seatingCap" name="seatingCap"><br>
+        <input type="submit" value="Update">
+    </form>
+</div>
+{% endblock %}

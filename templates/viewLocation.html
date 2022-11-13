@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Locations</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="content_title">Hearing Locations:</div>
+        <table>
+            <tr>
+                <th>Building</th>
+                <th>Room Number</th>
+                <th>City</th>
+                <th>Seating Capacity</th>
+            </tr>
+            {% for loc in locations %}
+                <tr>
+                    <td>{{ loc[0] }}</td>
+                    <td>{{ loc[1] }}</td>
+                    <td>{{ loc[2] }}</td>
+                    <td>{{ loc[3] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

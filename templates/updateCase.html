@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Update Case</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="content_title">Update case:</div>
+    <form action="/update/Case/{{ id }}/{{ id }}" method="post">
+        <label for="registry_officer">Choose Registry Officer:</label>
+        <select id="registry_officer" name="registry_officer">
+            {% for ro in registry_officers %}
+                {% if ro[0] == case[1] %}
+                    <option value="{{ ro[0] }}" selected="selected">{{ ro[1] }}</option>
+                {% else %}
+                    <option value="{{ ro[0] }}">{{ ro[1] }}</option>
+                {% endif %}
+            {% endfor %}
+        </select><br>
+        <label for="judge">Choose Judge:</label>
+        <select id="judge" name="judge">
+            {% for judge in judges %}
+                {% if judge[0] == case[2] %}
+                    <option value="{{ judge[0] }}" selected="selected">{{ judge[1] }}</option>
+                {% else %}
+                    <option value="{{ judge[0] }}">{{ judge[1] }}</option>
+                {% endif %}
+            {% endfor %}
+        </select><br>
+        <label for="court">Choose Court:</label>
+        <select id="court" name="court">
+            {% for court in courts %}
+                {% if court == case[4] %}
+                    <option value="{{ court }}" selected="selected">{{ court }}</option>
+                {% else %}
+                    <option value="{{ court }}">{{ court }}</option>
+                {% endif %}
+            {% endfor %}
+        </select><br>
+        <label for="outcome">Outcome:</label><br>
+        <input type="text" id="outcome" name="outcome" value="{{ case[3] }}"><br>
+        <input type="submit" value="Update">
+    </form>
+    <table>
+        <caption>Hearings</caption>
+        <tr>
+            <th>Date</th>
+            <th>Building</th>
+            <th>Room Number</th>
+            <th>City</th>
+            <th>Actions</th>
+        </tr>
+        {% for hearing in hearings %}
+            <tr>
+                <td>{{ hearing[0] }}</td>
+                <td>{{ hearing[1] }}</td>
+                <td>{{ hearing[2] }}</td>
+                <td>{{ hearing[3] }}</td>
+                <td>
+                    <a href="/update/Hearing/{{ id }}/{{ hearing[0] }}">Update</a>
+                    <a href="/delete/Hearing/{{ id }}/{{ hearing[0] }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="/create/Hearing/{{ id }}">Add</a>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <caption>Appellants</caption>
+        <tr>
+            <th>SIN</th>
+            <th>Name</th>
+            <th>Phone number</th>
+            <th>Address</th>
+            <th>Barrister name</th>
+            <th>Barrister email</th>
+            <th>Actions</th>
+        </tr>
+        {% for appellant in appellants %}
+            <tr>
+                <td>{{ appellant[0] }}</td>
+                <td>{{ appellant[1] }}</td>
+                <td>{{ appellant[2] }}</td>
+                <td>{{ appellant[3] }}</td>
+                <td>{{ appellant[4] }}</td>
+                <td>{{ appellant[5] }}</td>
+                <td>
+                    <a href="/update/Appellant/{{ id }}/{{ appellant[0] }}">Update</a>
+                    <a href="/delete/Appellant/{{ id }}/{{ appellant[0] }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="/create/Appellant/{{ id }}">Add</a>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <caption>Respondents</caption>
+        <tr>
+            <th>SIN</th>
+            <th>Name</th>
+            <th>Phone number</th>
+            <th>Address</th>
+            <th>Barrister name</th>
+            <th>Barrister email</th>
+            <th>Actions</th>
+        </tr>
+        {% for respondent in respondents %}
+            <tr>
+                <td>{{ respondent[0] }}</td>
+                <td>{{ respondent[1] }}</td>
+                <td>{{ respondent[2] }}</td>
+                <td>{{ respondent[3] }}</td>
+                <td>{{ respondent[4] }}</td>
+                <td>{{ respondent[5] }}</td>
+                <td>
+                    <a href="/update/Respondent/{{ id }}/{{ respondent[0] }}">Update</a>
+                    <a href="/delete/Respondent/{{ id }}/{{ respondent[0] }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="/create/Respondent/{{ id }}">Add</a>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <caption>Witnesses</caption>
+        <tr>
+            <th>SIN</th>
+            <th>Name</th>
+            <th>Phone number</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+        {% for witness in witnesses %}
+            <tr>
+                <td>{{ witness[0] }}</td>
+                <td>{{ witness[1] }}</td>
+                <td>{{ witness[2] }}</td>
+                <td>{{ witness[3] }}</td>
+                <td>{{ witness[4] }}</td>
+                <td>
+                    <a href="/update/Witness/{{ id }}/{{ witness[0] }}">Update</a>
+                    <a href="/delete/Witness/{{ id }}/{{ witness[0] }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="/create/Witness/{{ id }}">Add</a>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <caption>Factum</caption>
+        <tr>
+            <th>Document Number</th>
+            <th>Submitter</th>
+            <th>Date Submitted</th>
+            <th>Link to Document</th>
+            <th>Relevant Motion</th>
+            <th>Deadline</th>
+            <th>Actions</th>
+        </tr>
+        {% for factum in factums %}
+            <tr>
+                <td>{{ factum[0] }}</td>
+                <td>{{ factum[1] }}</td>
+                <td>{{ factum[2] }}</td>
+                <td>
+                    <a href="{{ factum[3] }}">link</a>
+                </td>
+                <td>{{ factum[4] }}</td>
+                <td>{{ factum[5] }}</td>
+                <td>
+                    <a href="/update/Factum/{{ id }}/{{ factum[0] }}">Update</a>
+                    <a href="/delete/Factum/{{ id }}/{{ factum[0] }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="/create/Factum/{{ id }}">Add</a>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <caption>Affidavits</caption>
+        <tr>
+            <th>Document Number</th>
+            <th>Submitter</th>
+            <th>Date Submitted</th>
+            <th>Link to Document</th>
+            <th>Date given</th>
+            <th>Affiant Name</th>
+            <th>Affiant Phone Number</th>
+            <th>Affiant Email</th>
+            <th>Actions</th>
+        </tr>
+        {% for affidavit in affidavits %}
+            <tr>
+                <td>{{ affidavit[0] }}</td>
+                <td>{{ affidavit[1] }}</td>
+                <td>{{ affidavit[2] }}</td>
+                <td>
+                    <a href="{{ affidavit[3] }}">link</a>
+                </td>
+                <td>{{ affidavit[4] }}</td>
+                <td>{{ affidavit[5] }}</td>
+                <td>{{ affidavit[6] }}</td>
+                <td>{{ affidavit[7] }}</td>
+                <td>
+                    <a href="/update/Affidavit/{{ id }}/{{ affidavit[0] }}">Update</a>
+                    <a href="/delete/Affidavit/{{ id }}/{{ affidavit[0] }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="/create/Affidavit/{{ id }}">Add</a>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

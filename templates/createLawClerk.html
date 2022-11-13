@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Create Law Clerk</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="content_title">Create new Law Clerk:</div>
+    <form action="/create/LawClerk/0" method="post">
+        <label for="judge">Clerk for:</label>
+        <select id="judge" name="judge">
+            {% for judge in judges %}
+                <option value="{{ judge[0] }}">{{ judge[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="name">Name of Law Clerk:</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">E-mail of Law Clerk:</label>
+        <input type="email" id="email" name="email"><br>
+        <input type="submit" value="Create">
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Create Case</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="content_title">Create new case:</div>
+    <form action="/create/Case/0" method="post">
+        <label for="registry_officer">Choose Registry Officer:</label>
+        <select id="registry_officer" name="registry_officer">
+            {% for ro in registry_officers %}
+                <option value="{{ ro[0] }}">{{ ro[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="judge">Choose Judge:</label>
+        <select id="judge" name="judge">
+            {% for judge in judges %}
+                <option value="{{ judge[0] }}">{{ judge[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="court">Choose Court:</label>
+        <select id="court" name="court">
+            <option value="FC">FC</option>
+            <option value="FCA">FCA</option>
+            <option value="TCC">TCC</option>
+            <option value="CMAC">CMAC</option>
+        </select>
+        <input type="submit" value="Create">
+    </form>
+</div>
+{% endblock %}
